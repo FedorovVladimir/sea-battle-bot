@@ -17,7 +17,7 @@ func NewCell() *Cell {
 	return &Cell{state: sea}
 }
 
-func (c *Cell) shot() {
+func (c *Cell) Shot() {
 	if c.state == sea {
 		c.state = ruinsOfSea
 	}
