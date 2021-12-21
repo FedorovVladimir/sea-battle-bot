@@ -13,8 +13,20 @@ type Cell struct {
 	state State
 }
 
-func NewCell() *Cell {
-	return &Cell{state: sea}
+type Option func(*Cell)
+
+func WithState(state State) Option {
+	return func(cell *Cell) {
+		cell.state = state
+	}
+}
+
+func NewCell(setters ...Option) *Cell {
+	cell := &Cell{state: sea}
+	for _, setter := range setters {
+		setter(cell)
+	}
+	return cell
 }
 
 func (c *Cell) Shot() bool {

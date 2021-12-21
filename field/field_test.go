@@ -21,9 +21,15 @@ func Test_field_shot(t *testing.T) {
 	}{
 		{
 			name:   "shot to sea (0;0)",
-			fields: fields{cells: newField().cells},
+			fields: fields{cells: [][]*cell.Cell{{cell.NewCell()}}},
 			args:   args{row: 0, col: 0},
 			want:   false,
+		},
+		{
+			name:   "shot to ship (0;0)",
+			fields: fields{cells: [][]*cell.Cell{{cell.NewCell(cell.WithState(cell.Ship))}}},
+			args:   args{row: 0, col: 0},
+			want:   true,
 		},
 	}
 	for _, tt := range tests {
@@ -53,7 +59,7 @@ func Test_field_setShip(t *testing.T) {
 	}{
 		{
 			name:   "set ship to sea (0;0)",
-			fields: fields{cells: newField().cells},
+			fields: fields{cells: [][]*cell.Cell{{cell.NewCell()}}},
 			args:   args{row: 0, col: 0},
 			want:   cell.Ship,
 		},
