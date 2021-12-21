@@ -27,3 +27,7 @@ func (c *Cell) Shot() bool {
 	}
 	return false
 }
+
+func (c *Cell) setShip() {
+	c.state = ship
+}

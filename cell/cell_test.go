@@ -44,3 +44,29 @@ func Test_cell_shot(t *testing.T) {
 		})
 	}
 }
+
+func TestCell_setShip(t *testing.T) {
+	type fields struct {
+		state cellState
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		want   cellState
+	}{
+		{
+			name:   "set ship to see",
+			fields: fields{state: sea},
+			want:   ship,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			c := &Cell{state: tt.fields.state}
+			c.setShip()
+			if c.state != tt.want {
+				t.Errorf("%s got cell state: %s, but want: %s\n", tt.name, c.state, tt.want)
+			}
+		})
+	}
+}
