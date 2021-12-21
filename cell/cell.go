@@ -17,11 +17,13 @@ func NewCell() *Cell {
 	return &Cell{state: sea}
 }
 
-func (c *Cell) Shot() {
+func (c *Cell) Shot() bool {
+	if c.state == ship {
+		c.state = ruinsOfShip
+		return true
+	}
 	if c.state == sea {
 		c.state = ruinsOfSea
 	}
-	if c.state == ship {
-		c.state = ruinsOfShip
-	}
+	return false
 }

@@ -19,6 +19,6 @@ func newField() *field {
 	return &field{cells: cells}
 }
 
-func (f *field) shot(row, col int) {
-	f.cells[row][col].Shot()
+func (f *field) shot(row, col int) bool {
+	return f.cells[row][col].Shot()
 }
