@@ -31,6 +31,17 @@ func (f *field) setShip(row, col int) {
 	f.cells[row][col].SetShip()
 }
 
+func (f *field) inBattle() bool {
+	for _, row := range f.cells {
+		for _, c := range row {
+			if c.GetState() == cell.Ship {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func (f *field) String() string {
 	s := strings.Builder{}
 	for _, row := range f.cells {

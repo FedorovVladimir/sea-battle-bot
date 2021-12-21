@@ -3,10 +3,10 @@ package cell
 type State string
 
 const (
-	sea         = State("SEA")
+	Sea         = State("SEA")
 	ruinsOfSea  = State("RUINS_OF_SEA")
 	Ship        = State("SHIP")
-	ruinsOfShip = State("RUINS_OF_SHIP")
+	RuinsOfShip = State("RUINS_OF_SHIP")
 )
 
 type Cell struct {
@@ -22,7 +22,7 @@ func WithState(state State) Option {
 }
 
 func NewCell(setters ...Option) *Cell {
-	cell := &Cell{state: sea}
+	cell := &Cell{state: Sea}
 	for _, setter := range setters {
 		setter(cell)
 	}
@@ -31,10 +31,10 @@ func NewCell(setters ...Option) *Cell {
 
 func (c *Cell) Shot() bool {
 	if c.state == Ship {
-		c.state = ruinsOfShip
+		c.state = RuinsOfShip
 		return true
 	}
-	if c.state == sea {
+	if c.state == Sea {
 		c.state = ruinsOfSea
 	}
 	return false
