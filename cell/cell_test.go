@@ -15,23 +15,23 @@ func Test_cell_shot(t *testing.T) {
 	}{
 		{
 			name:   "shot to sea",
-			fields: fields{state: Sea},
-			want:   RuinsOfSea,
+			fields: fields{state: sea},
+			want:   ruinsOfSea,
 		},
 		{
 			name:   "shot to ship",
-			fields: fields{state: Ship},
-			want:   RuinsOfShip,
+			fields: fields{state: ship},
+			want:   ruinsOfShip,
 		},
 		{
 			name:   "shot to ruins on sea",
-			fields: fields{state: RuinsOfSea},
-			want:   RuinsOfSea,
+			fields: fields{state: ruinsOfSea},
+			want:   ruinsOfSea,
 		},
 		{
 			name:   "shot to ruins on ship",
-			fields: fields{state: RuinsOfShip},
-			want:   RuinsOfShip,
+			fields: fields{state: ruinsOfShip},
+			want:   ruinsOfShip,
 		},
 	}
 	for _, tt := range tests {

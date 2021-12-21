@@ -3,10 +3,10 @@ package cell
 type cellState string
 
 const (
-	Sea         = cellState("SEA")
-	RuinsOfSea  = cellState("RUINS_OF_SEA")
-	Ship        = cellState("SHIP")
-	RuinsOfShip = cellState("RUINS_OF_SHIP")
+	sea         = cellState("SEA")
+	ruinsOfSea  = cellState("RUINS_OF_SEA")
+	ship        = cellState("SHIP")
+	ruinsOfShip = cellState("RUINS_OF_SHIP")
 )
 
 type cell struct {
@@ -14,10 +14,10 @@ type cell struct {
 }
 
 func (c *cell) shot() {
-	if c.state == Sea {
-		c.state = RuinsOfSea
+	if c.state == sea {
+		c.state = ruinsOfSea
 	}
-	if c.state == Ship {
-		c.state = RuinsOfShip
+	if c.state == ship {
+		c.state = ruinsOfShip
 	}
 }
