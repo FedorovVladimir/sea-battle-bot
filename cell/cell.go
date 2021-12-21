@@ -1,16 +1,16 @@
 package cell
 
-type cellState string
+type State string
 
 const (
-	sea         = cellState("SEA")
-	ruinsOfSea  = cellState("RUINS_OF_SEA")
-	ship        = cellState("SHIP")
-	ruinsOfShip = cellState("RUINS_OF_SHIP")
+	sea         = State("SEA")
+	ruinsOfSea  = State("RUINS_OF_SEA")
+	Ship        = State("SHIP")
+	ruinsOfShip = State("RUINS_OF_SHIP")
 )
 
 type Cell struct {
-	state cellState
+	state State
 }
 
 func NewCell() *Cell {
@@ -18,7 +18,7 @@ func NewCell() *Cell {
 }
 
 func (c *Cell) Shot() bool {
-	if c.state == ship {
+	if c.state == Ship {
 		c.state = ruinsOfShip
 		return true
 	}
@@ -28,6 +28,10 @@ func (c *Cell) Shot() bool {
 	return false
 }
 
-func (c *Cell) setShip() {
-	c.state = ship
+func (c *Cell) SetShip() {
+	c.state = Ship
+}
+
+func (c *Cell) GetState() State {
+	return c.state
 }

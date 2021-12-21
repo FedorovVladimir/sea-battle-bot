@@ -22,3 +22,7 @@ func newField() *field {
 func (f *field) shot(row, col int) bool {
 	return f.cells[row][col].Shot()
 }
+
+func (f *field) setShip(row, col int) {
+	f.cells[row][col].SetShip()
+}

@@ -6,12 +6,12 @@ import (
 
 func Test_cell_shot(t *testing.T) {
 	type fields struct {
-		state cellState
+		state State
 	}
 	tests := []struct {
 		name   string
 		fields fields
-		want   cellState
+		want   State
 	}{
 		{
 			name:   "shot to sea",
@@ -20,7 +20,7 @@ func Test_cell_shot(t *testing.T) {
 		},
 		{
 			name:   "shot to ship",
-			fields: fields{state: ship},
+			fields: fields{state: Ship},
 			want:   ruinsOfShip,
 		},
 		{
@@ -47,23 +47,23 @@ func Test_cell_shot(t *testing.T) {
 
 func TestCell_setShip(t *testing.T) {
 	type fields struct {
-		state cellState
+		state State
 	}
 	tests := []struct {
 		name   string
 		fields fields
-		want   cellState
+		want   State
 	}{
 		{
 			name:   "set ship to see",
 			fields: fields{state: sea},
-			want:   ship,
+			want:   Ship,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			c := &Cell{state: tt.fields.state}
-			c.setShip()
+			c.SetShip()
 			if c.state != tt.want {
 				t.Errorf("%s got cell state: %s, but want: %s\n", tt.name, c.state, tt.want)
 			}
