@@ -6,28 +6,33 @@ import (
 	"strings"
 )
 
-const n = 10
-
 type field struct {
+	size  int
 	cells [][]*cell.Cell
 }
 
-func NewField() *field {
-	cells := make([][]*cell.Cell, n)
-	for i := 0; i < n; i++ {
-		cells[i] = make([]*cell.Cell, n)
-		for j := 0; j < n; j++ {
+func NewField(size int) *field {
+	cells := make([][]*cell.Cell, size)
+	for i := 0; i < size; i++ {
+		cells[i] = make([]*cell.Cell, size)
+		for j := 0; j < size; j++ {
 			cells[i][j] = cell.NewCell()
 		}
 	}
-	return &field{cells: cells}
+	return &field{size: size, cells: cells}
 }
 
-func (f *field) shot(row, col int) bool {
+func (f *field) Shot(row, col int) bool {
+	if row >= f.size || col >= f.size || row < 0 || col < 0 {
+		return false
+	}
 	return f.cells[row][col].Shot()
 }
 
-func (f *field) setShip(row, col int) {
+func (f *field) SetShip(row, col int) {
+	if row >= f.size || col >= f.size || row < 0 || col < 0 {
+		return
+	}
 	f.cells[row][col].SetShip()
 }
 
