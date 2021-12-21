@@ -36,7 +36,7 @@ func (f *field) SetShip(row, col int) {
 	f.cells[row][col].SetShip()
 }
 
-func (f *field) inBattle() bool {
+func (f *field) InBattle() bool {
 	for _, row := range f.cells {
 		for _, c := range row {
 			if c.GetState() == cell.Ship {
