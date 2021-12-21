@@ -47,3 +47,7 @@ func (c *Cell) SetShip() {
 func (c *Cell) GetState() State {
 	return c.state
 }
+
+func (c *Cell) String() string {
+	return string(c.state)
+}

@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sea-battle-bot/field"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
+	f := field.NewField()
+	fmt.Println(f)
 }
