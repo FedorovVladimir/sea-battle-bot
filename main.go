@@ -6,7 +6,10 @@ import (
 )
 
 func main() {
-	f := field.NewField(4)
+	f, err := field.NewField(field.Min)
+	if err != nil {
+		panic(err)
+	}
 	f.SetShip(0, 0)
 	fmt.Println(f.InBattle())
 	fmt.Println(f)

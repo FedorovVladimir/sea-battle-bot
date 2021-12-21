@@ -1,9 +1,17 @@
 package field
 
 import (
+	"errors"
 	"fmt"
 	"sea-battle-bot/cell"
 	"strings"
+)
+
+type Size int
+
+const (
+	Min = Size(5)
+	Max = Size(10)
 )
 
 type Field struct {
@@ -11,15 +19,19 @@ type Field struct {
 	cells [][]*cell.Cell
 }
 
-func NewField(size int) *Field {
+func NewField(size Size) (*Field, error) {
+	if size != Min && size != Max {
+		return nil, errors.New("error field's size")
+	}
+	n := int(size)
 	cells := make([][]*cell.Cell, size)
-	for i := 0; i < size; i++ {
+	for i := 0; i < n; i++ {
 		cells[i] = make([]*cell.Cell, size)
-		for j := 0; j < size; j++ {
+		for j := 0; j < n; j++ {
 			cells[i][j] = cell.NewCell()
 		}
 	}
-	return &Field{size: size, cells: cells}
+	return &Field{size: n, cells: cells}, nil
 }
 
 func (f *Field) Shot(row, col int) bool {
