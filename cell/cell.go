@@ -9,11 +9,15 @@ const (
 	ruinsOfShip = cellState("RUINS_OF_SHIP")
 )
 
-type cell struct {
+type Cell struct {
 	state cellState
 }
 
-func (c *cell) shot() {
+func NewCell() *Cell {
+	return &Cell{state: sea}
+}
+
+func (c *Cell) shot() {
 	if c.state == sea {
 		c.state = ruinsOfSea
 	}
